@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>dots</title>
+  <style type="text/css">
+  canvas { border: 5px solid black; }
+  </style>
+</head>
+<body onload="draw();">
+  <canvas id="tutorial" width="1000" height="400"></canvas>
+  <form action="/action_page.php">
+    <select name="filtro"  id="kk">
+      <option value="drag & drop">drag&&drop</option>//rojo
+      <option value="touch">touch</option>//azul
+      <option value="" selected>move</option>//negro
+    </select>
+  </form>
+  <!--  </form>
+  <input value="Reload Page" onclick="history.go(0)" type="button">
+</form> -->
+<button id="demo">Click me.</>
+  <script type="text/javascript">
+  var array=[];//array
+  var boo=false;
+  var tus;
+  window.onload=function()
+  {
+    var canvas = document.getElementById('tutorial');
+    if (canvas.getContext) {
+      var ctx = canvas.getContext('2d');
+    }
+    function posicion(px,py,c){//constructor de objetos
+      this.posx=px;
+      this.posy=py;
+      this.cc=c;
+    }
+    draw();
+    var num=Math.random()*200;
+    function drawSquare($num){
+      var x=0;
+      array = [];
+      while(x<100){
+        nuevo();
+        x++;
+      }
+    }
+    function draw() {
+      drawSquare();
+      llamar();
+    }
+    function nuevo(){
+      var x=Math.random()*1000;
+      var y=Math.random()*400;
+      var c=Math.round(Math.random()*30);
+      if(c<=10){
+        c= '#990000';
+      }else{
+        if( c<=20&&c>10){
+          c= '#339CFF';
+        }else{
+          c= '#17202A';
+        }
+      }
+      var element=new posicion(x,y,c);
+
+      array.push(element);
+    }
+    function llamar(){
+      var o=0;
+      while(o<100){
+        mostrar(array[o].posx,array[o].posy,array[o].cc,tus);
+        o++;
+      }
+    }
+    function mostrar(x,y,c,otra){
+      if(boo===false){
+        console.log("fvfvfvfv");
+        ctx.fillStyle= c;
+        ctx.fillRect(x,y, 8, 8);
+        ctx.closePath()
+      }else{
+        if(c===otra){
+          console.log("holaa");
+          ctx.fillStyle= c;
+          ctx.fillRect(x,y, 8, 8);
+          ctx.closePath()
+        }
+      }
+
+    }
+    function filtro(){
+      var e = document.getElementById("kk"),
+      v=e.value,
+      txt=e.options[e.selectedIndex].innerText;
+      boo=true;
+      if(txt==="drag&&drop"){
+        tus='#990000';
+      }else{
+        if(txt==="move"){
+          tus='#17202A';
+        }else{
+          tus='#339CFF';
+        }
+      }
+    }
+    function animate(){
+      window.setTimeout(animate,10);
+      draw();
+    }
+    animate();
+    document.getElementById("demo").addEventListener("click",filtro);
+  }
+  </script>
+</body>
+</html>
