@@ -1,0 +1,30 @@
+# ./docker-compose.yml
+
+version: '3'
+
+services:
+  db:
+    build:
+      context: ./BD
+    volumes:
+      - ./volumeDB:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: devuser
+      MYSQL_PASSWORD: devpass
+    ports:
+      - "9906:3306"
+  web:
+    build: .
+    depends_on:
+      - db
+    volumes:
+      - ./php:/var/www/html/
+    ports:
+      - "8100:80"
+    stdin_open: true
+    tty: true
+
+volumes:
+  volumeDB:

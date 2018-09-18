@@ -1,0 +1,16 @@
+{
+	"usuario1": {
+		"id":01,
+		"nombre": "luis",
+		"minijuego":{
+			"id": 011,
+			"detalle": "segunda prueba"
+			"actividades"{
+				"actividad1":{
+					"id_act": 0111,
+					"detalle":"Contar"
+				}
+			}
+		}
+	}
+}
