@@ -8,7 +8,6 @@
         move_uploaded_file($_FILES['archivo']['tmp_name'] , "Json's/" . $_FILES['archivo']['name']);
         $jsonCont = file_get_contents("Json's/" . $_FILES['archivo']['name']);
         $content = json_decode($jsonCont);
-        mysqli_close($conexion);
     ?>
     <h2 aling="center"> ¡Guardado Exitoso! </h2>
     <h3><a href="index.php" aling ="center"> Cargar nuevo Archivo .Json</a></h3>
