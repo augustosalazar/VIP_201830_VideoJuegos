@@ -1,15 +1,21 @@
-<!-- ./php/index.php -->
+<?php
 
-<html>
-    <head>
-        <title>Base De Datos</title>
-    </head>
+$link=@mysqli_connect("servicioweb_db_1","devuser","devuser","test_db");
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
 
-    <body>
-        <h2 align="center"><FONT COLOR="blue">SERVICIO WEB</FONT></h2>
-        
-<div style="text-align:center;">       
-<h3><a href="subida.php"> Subir Json</a></h3>
-</div>
-</body>
-</html>
+$query = "SELECT * FROM infojuego";
+
+$result = mysqli_query($link,$query);
+
+while ($row = mysqli_fetch_assoc($result))
+{
+    echo $row['accion'], PHP_EOL;
+}
+mysqli_close($link);
+
+?>
