@@ -23,14 +23,14 @@ foreach($players as $key=>$value){
 			print("TimeStamp de mini session ".$valuez['TimeStamp']."\n");
 			$valuetimestampminisession=$valuez['TimeStamp'];
 			print("LevelOfAccomplishment de mini session ".$valuez['LevelOfAccomplishment']."\n");
-			$levelofaccomplishmentminisession=valuez['LevelOfAccomplishment'];
+			$levelofaccomplishmentminisession=$valuez['LevelOfAccomplishment'];
 			$activitySessions = $valuez['ActivitySessions'];
 			echo "Num de ActivitySessions ".sizeof($activitySessions)."\n";
 			foreach($activitySessions as $keyw=>$valuew){
 				print("TimeStampStart de la session ".$valuew['TimeStampStart']."\n");
 				$timestampstart=$valuew['TimeStampStart'];
 				print("LevelOfAccomplishment de la session ".$valuew['LevelOfAccomplishment']."\n");
-				$levelofaccomplishmentsession=valuew['LevelOfAccomplishment'];
+				$levelofaccomplishmentsession=$valuew['LevelOfAccomplishment'];
 				$ActionEvents = $valuew['ActionEvents'];
 				echo "Num de ActionEvents ".sizeof($ActionEvents)."\n";
 				foreach($ActionEvents as $keye=>$valuee){
