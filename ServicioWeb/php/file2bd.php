@@ -7,8 +7,7 @@ $json_a = json_decode($string, true);
 $players = $json_a['Players'];
 
 foreach($players as $key=>$value){
-
-    print("User Id ".$value['ID']."\n");
+  print("User Id ".$value['ID']."\n");
 	$User=$value['ID'];
 	print("Nivel ".$value['Nivel']."\n");
 	$level=$value['Nivel'];
