@@ -1,0 +1,93 @@
+<html>
+    <head>
+      <script src="p5.min.js"></script>
+    </head>
+    <body>
+      <form>
+        Tiempo <input type="text" id="time" name="time" value="" />
+              <input type="button" id="button1" value="retroceder" onClick= "regresar()" />
+              <input type="button" id="button2" value="avanzar" onClick= "tiempo()"/>
+      </form>
+      <script>
+        var data = {};
+        var puntos = [];
+        var g;
+        var time;
+        var btn = document.getElementById("time");
+
+        //El preload se carga antes de iniciar el programa
+        function preload() {
+          data = loadJSON("points.json");
+        }
+
+        // Define las caracteristicas de P5 en la pagina
+        function setup() {
+          time = 0;
+          btn.value = time; 
+          g = loadImage("fondo.png");
+          createCanvas(800, 450);
+          loadData();
+        }
+
+        // Convierte los elementos del vector puntos en objetos point
+        function loadData() {
+          var aux = data.puntos;
+          for (var i = 0; i < aux.length; i++) {
+            var punto = aux[i];
+            var x = punto.x;
+            var y = punto.y;
+            var diameter = punto.d;
+            var time = punto.time;
+            var tipo = punto.tipo;
+            // guarda los objetos en un arraylist
+            puntos.push(new Point(x, y, diameter, time, tipo));
+          }
+        }
+
+        function draw() {
+          background(g);
+          // Dibuja todos los punos
+          for (var i = 0; i < puntos.length; i++) {
+            if(puntos[i].time == time){
+                if (puntos[i].tipo == "evento significativo"){
+                  stroke(93,155,155)
+                  fill(93,100,255);
+                  }else{
+                    if(puntos[i].tipo == "fuera de zona"){
+                      stroke(255,0,5);
+                      fill(255,0,3);
+                    }
+                  }
+                  puntos[i].display();
+              }          
+          }
+        }
+
+        // Clase Point
+        function Point(x, y, diameter, time, tipo) {
+          this.x = x;
+          this.y = y;
+          this.diameter = diameter;
+          this.radius = diameter / 2;
+          this.time = time;
+          this.tipo = tipo;
+
+          // Dibuja el punto
+          this.display = function() {
+                  ellipse(this.x, this.y, this.diameter, this.diameter);
+          };
+        }
+
+        function tiempo(){
+           time = time + 1;
+           btn.value = time;
+        }
+
+        function regresar(){
+          time = time - 1;
+          btn.value = time; 
+        }
+
+      </script>
+    </body>
+  </html>

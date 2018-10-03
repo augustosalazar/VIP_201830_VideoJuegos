@@ -1,0 +1,49 @@
+<html>
+  <head>
+  	<script src="p5.min.js"></script>
+  </head>
+  <body>
+    <form id="form1">
+      	Cantidad:<input type="text" id="cant"/>
+    <input type="button" value="Dibujar puntos" onclick="setup()">
+	</form>
+  	<script>
+  	var cantidad;
+	var bugs = []; //arreglo de objetos Jitter
+	
+	function setup() {
+	  createCanvas(400, 400);
+	  cantidad = document.getElementById("cant").value;
+	  // Crear objetos
+	  for (var i=0; i<cantidad; i++) {
+	    bugs.push(new Jitter());
+	  }
+	}
+
+	function draw() {
+	  background(50, 89, 100);
+	  for (var i=0; i<cantidad; i++) {
+	  	bugs[i].move();
+	    bugs[i].display();
+	  }
+	  ellipse(0,0,10,10);
+	}
+
+	function Jitter() {
+	  this.x = random(width);
+	  this.y = random(height);
+	  this.diameter = random(20, 20);
+	  this.speed = 10;
+
+	  this.move = function() {
+	    this.x += random(-this.speed, this.speed);
+	    this.y += random(-this.speed, this.speed);
+	  };
+
+	  this.display = function() {
+	    ellipse(this.x, this.y, this.diameter, this.diameter);
+	  };
+	}
+    </script>
+  </body>
+</html>
