@@ -1,7 +1,7 @@
 <?php
-$db_host = 'localhost';
-$db_username = 'devuser';
-$db_password = 'devpass';
-$db_schema = 'test_db';
+$db_host = 'servicioweb2_db_1';
+$db_username = 'root';
+$db_password = 'password';
+$db_schema = 'down';
 date_default_timezone_set("America/Bogota");
 ?>
