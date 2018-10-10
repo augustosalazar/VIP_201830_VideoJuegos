@@ -20,16 +20,43 @@ if (!$connection) {
 //$query1 = "SELECT * FROM Jugador";
 
 foreach($players as $key=>$value){
-	$User=$value['ID'];
+	$user=$value['ID'];
 	$level=$value['Nivel'];
 	$sessions = $value['GameSessions'];
+	$insert = "INSERT INTO Jugador (idJugador,nivelJujador) VALUES ('$user','$level')";
+	$resultado=mysqli_query($connection,$insert);
+	if(!$resultado){
+		echo "error 1";
+	}
 	foreach($sessions as $keyx=>$valuex){
 		$timestamp=$valuex['TimeStamp'];
 		$mini = $valuex['MiniGameSessions'];
+
+		$query_verify = "SELECT * FROM Jugador WHERE idJugador=".$user;
+		$result = mysqli_query($connection,$query_verify);
+		$row = mysqli_fetch_assoc($result);
+		$aux = $row['id'];
+
+		$insert = "INSERT INTO SesionJuego (idJugador,timeStamp) VALUES ('$aux','$timestamp')";
+		$resultado=mysqli_query($connection,$insert);
+		if(!$resultado){
+			echo "error 2";
+		}
 		foreach($mini as $keyz=>$valuez){
 			$timestampminisession=$valuez['TimeStamp'];
 			$idminijuego=$valuez['ID'];
 			$activitySessions = $valuez['ActivitySessions'];
+
+			$query_verify = "SELECT * FROM SesionJuego where timeStamp=".$timestamp;
+			$result = mysqli_query($connection,$query_verify);
+			$row = mysqli_fetch_assoc($result);
+			$aux = $row['id'];
+
+			$insert = "INSERT INTO SesionMiniJuego (idSesionMinijuego,timestamp,idSesionJuego) VALUES ('$idminijuego','$timestampminisession','$aux')";
+			$resultado=mysqli_query($connection,$insert);
+			if(!$resultado){
+				echo "error 3";
+			}
 			foreach($activitySessions as $keyw=>$valuew){
 				$timestampstart=$valuew['TimeStampStart'];
 				$idActividad =$valuew['ID'];
@@ -37,6 +64,18 @@ foreach($players as $key=>$value){
 				$levelofaccomplishmentsession=$valuew['LevelOfAccomplishment'];
 				$timefirstevent=$valuew['TimeToFirstEvent'];
 				$ActionEvents = $valuew['ActionEvents'];
+
+				$query_verify = "SELECT * FROM SesionMiniJuego where idSesionMinijuego=".$idminijuego;
+				$result = mysqli_query($connection,$query_verify);
+				$row = mysqli_fetch_assoc($result);
+				$aux = $row['id'];
+
+
+				$insert = "INSERT INTO SesionActividad (TimeStampInicio,timeStampFin, timepoPrimeraActiviadSignificativa,nivelExito,SesionActividadcol, idSesionMinijuego) VALUES ('$timestampstart','$timestampend','$timefirstevent','$levelofaccomplishmentsession','$idActividad','$aux')";
+				$resultado=mysqli_query($connection,$insert);
+				if(!$resultado){
+					echo "error 4";
+				}
 				echo "Num de ActionEvents ".sizeof($ActionEvents)."\n";
 				foreach($ActionEvents as $keye=>$valuee){
 					$type = $valuee['type'];
@@ -44,35 +83,20 @@ foreach($players as $key=>$value){
 					$coordinatestart = $valuee['CoordinatesStart'];
 					$coordinatesend= $valuee['CoordinatesEnd'];
 					$ObjectInteractedID= $valuee['ObjectInteractedID'];
+
+					/*$query_verify = "SELECT * FROM SesionActividad where idSesionMinijuego=".$idminijuego;
+					$result = mysqli_query($connection,$query_verify);
+					$result = mysqli_query($connection,$query);
+					$row = mysqli_fetch_assoc($result);*/
+
+					$insert = "INSERT INTO Evento (tipo,timeStamp,coordenadaInicio,coordenadaFin, idElemento) VALUES ('$type','$timeofevent','$coordinatestart','$coordinatesend','$ObjectInteractedID')";
+					$resultado=mysqli_query($connection,$insert);
+					if(!$resultado){
+						echo "error 5";
+					}
 				}
 			}
 		}
 	}
-}
-
-$insert = "INSERT INTO Jugador (idJugador,nivelJujador) VALUES ('$User','$level')";
-$resultado=mysqli_query($connection,$insert);
-if(!$resultado){
-	echo "error 1";
-}
-$insert = "INSERT INTO SesionJuego (idJugador,timeStamp) VALUES ('$User','$timestamp')";
-$resultado=mysqli_query($connection,$insert);
-if(!$resultado){
-	echo "error 2";
-}
-$insert = "INSERT INTO SesionMiniJuego (idSesionMinijuego,timestamp) VALUES ('$idminijuego','$timestampminisession')";
-$resultado=mysqli_query($connection,$insert);
-if(!$resultado){
-	echo "error 3";
-}
-$insert = "INSERT INTO SesionActividad (TimeStampInicio,timeStampFin, timepoPrimeraActiviadSignificativa,nivelExito,SesionActividadcol, idSesionMinijuego) VALUES ('$timestampstart','$timestampend','$timefirstevent','$levelofaccomplishmentsession','$idActividad','$idminijuego')";
-$resultado=mysqli_query($connection,$insert);
-if(!$resultado){
-	echo "error 4";
-}
-$insert = "INSERT INTO Evento (tipo,timeStamp,coordenadaInicio,coordenadaFin, idElemento) VALUES ('$type','$timeofevent','$coordinatestart','$coordinatesend','$ObjectInteractedID')";
-$resultado=mysqli_query($connection,$insert);
-if(!$resultado){
-	echo "error 5";
 }
 ?>
