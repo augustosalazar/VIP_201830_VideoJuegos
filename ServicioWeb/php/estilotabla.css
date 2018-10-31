@@ -1,0 +1,29 @@
+table {
+   background-color:white;
+   width: 50%;
+   font-family:Arial;
+   border-collapse: collapse;
+   table-align: center;
+   padding-left: 300px;
+}
+table tr:first-child{
+  background-color: #FF4000 ;
+  color: black;
+}
+ td {
+   width: 25%;
+   text-align: center;
+   vertical-align: top;
+   border-collapse: collapse;
+   padding: 10px;
+}
+thead{
+    background-color: #34495E;
+    color:white;
+}
+table tr:not(:first-child){
+    cursor: pointer;transition: all .25s ease-in-out;
+}
+table tr:not(:first-child):hover{
+    background-color: #ddd;
+}
