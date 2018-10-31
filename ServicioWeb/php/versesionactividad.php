@@ -18,9 +18,9 @@
         <th>Hora de fin</th> 
         <th>Fecha de primera actividad significativa</th>
         <th>Hora de actividad significativa</th>        
-        <th>Id Sesion de actividad</th>
+        <th>Sesion de actividad</th>
         <th>Nivel de exito</th>
-        <th>Id de Minijuego</th>
+        <th>Minijuego</th>
         </tr>
         <?php
             $connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);

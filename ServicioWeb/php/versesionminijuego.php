@@ -12,7 +12,7 @@
     <table border=1 cellspacing=0 cellpadding=8 style="margin: 0 auto;">  
     <tr bgcolor="red">
     <th>ID</th>  
-    <th>Id Jugador</th>
+    <th>Jugador</th>
     <th>Fecha</th>
     <th>Hora</th> 
     <th>Sesion del juego</th>

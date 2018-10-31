@@ -14,7 +14,7 @@
     <th>ID</th>
     <th>Fecha</th>
     <th>Hora</th>    
-    <th>Id Jugador</th>
+    <th>Jugador</th>
     </tr>
     <?php
         $connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);

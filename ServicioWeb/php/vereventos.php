@@ -13,12 +13,13 @@
     <table border=1 cellspacing=0 cellpadding=8 style="margin: 0 auto;">  
     <tr>
     <th>ID</th> 
-    <th>TimeStamp</th>
+    <th>Fecha</th>
+    <th>Hora</th>
     <th>Tipo</th> 
     <th>Coordenada de inicio</th>    
     <th>Coordenada de fin</th>
-    <th>Id elemento</th>
-    <th>Id Sesión de actividad</th>
+    <th>elemento</th>
+    <th>Sesión de actividad</th>
     </tr>
     <?php
     $connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);
@@ -34,7 +35,10 @@
         while ($row = mysqli_fetch_row($result)){   
             echo "<tr>";  
             echo "<td align=center>".$row[0]."</td>";  
-            echo "<td align=center>".$row[1]."</td>";
+            $date = date('Y-m-d',$row[1]);  
+            echo "<td align=center>".$date."</td>";
+            $hour = date('H:i:s',$row[1]);
+            echo "<td align=center>".$hour."</td>";  
             echo "<td align=center>".$row[2]."</td>";
             echo "<td align=center>".$row[3]."</td>";
             echo "<td align=center>".$row[4]."</td>";
