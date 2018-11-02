@@ -12,10 +12,10 @@
     <table border=1 cellspacing=0 cellpadding=8 style="margin: 0 auto;">  
     <tr bgcolor="red">
     <th>ID</th>  
-    <th>Jugador</th>
+    <th>Nombre del Minijuego</th>
     <th>Fecha</th>
     <th>Hora</th> 
-    <th>Sesion del juego</th>
+    <th>Nombre de la sesion del juego</th>
     </tr>
     <?php
         $connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);

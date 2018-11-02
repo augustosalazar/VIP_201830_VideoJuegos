@@ -14,7 +14,7 @@
     <th>ID</th>
     <th>Fecha</th>
     <th>Hora</th>    
-    <th>Jugador</th>
+    <th>Nombre de Jugador</th>
     </tr>
     <?php
         $connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);
@@ -34,7 +34,7 @@
             echo "<td align=center>".$date."</td>";
             $hour = date('H:i:s',$row[2]);  
             echo "<td align=center>".$hour."</td>";
-            echo "<td align=center>".$row[3]."</td>";  
+            echo "<td align=center>".$_GET['var2']."</td>";  
             echo "</tr>";  
         }  
         echo "</table>";

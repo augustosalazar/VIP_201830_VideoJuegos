@@ -12,7 +12,6 @@
     <table border=1 cellspacing=0 cellpadding=8 style="margin: 0 auto;">  
     <tr>
     <th>ID</th>
-    <!--th>Id del jugador</th-->  
     <th>Nombre</th>
     <th>Nivel</th>
     <th>Edad</th>
@@ -29,7 +28,7 @@
         $result = mysqli_query($connection,$query);
         // Añadir registros a la tabla que se creó anteriormente, desde la base de datos  
         while ($row = mysqli_fetch_row($result)){
-            echo "<tr onclick=location='versesiones.php?var=$row[0]'>";  
+            echo "<tr onclick=location='versesiones.php?var=$row[0]&var2=$row[2]'>";  
             echo "<td align=center>".$row[0]."</td>";  
             echo "<td align=center>".$row[2]."</td>";
             echo "<td align=center>".$row[3]."</td>";
