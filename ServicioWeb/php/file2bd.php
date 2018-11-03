@@ -23,6 +23,7 @@ foreach($players as $key=>$value){
 	$user=$value['ID'];
 	$level=$value['Nivel'];
 	$nombre=$value['Nombre'];
+	$edad =$value['Edad'];
 	$sessions = $value['GameSessions'];
 	$query_verify = "SELECT id FROM Jugador WHERE idJugador='".$user."'";
 	//printf("Query %s\n", $query_verify);
@@ -30,7 +31,8 @@ foreach($players as $key=>$value){
 		$row_cnt = $result->num_rows;
 		//printf("Result set has %d rows.\n", $row_cnt);
 		if ($row_cnt == 0){
-			$insert = "INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador) VALUES ('$user','$level','$nombre')";
+			$insert = "INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador) VALUES ('$user','$level','$nombre','$edad')";
+
 
 			$result=mysqli_query($connection,$insert);
 			if(!$result){
