@@ -5,11 +5,6 @@
     <head>
         <title>Visualización de datos</title>
         <script src="p5.min.js"></script>
-        <form>
-        	Tiempo <input type="text" id="time" name="time" value="" />
-              <input type="button" id="button1" value="retroceder" onClick= "regresar()" />
-              <input type="button" id="button2" value="avanzar" onClick= "tiempo()"/>
-      	</form>
     </head>
     <body>
     	<?php
@@ -49,9 +44,7 @@
 	        }
 
 	        //Configura las caracteriticas y carga los datos necesarios del canvas antes de dibujar 
-	    	function setup() {
-				time = 0;
-				btn.value = time; 
+	    	function setup() { 
 				g = loadImage(escenario(<?php echo $_GET['var2']; ?>));
 				createCanvas(800, 450);
 				loadData();
@@ -173,18 +166,6 @@
 				this.display = function() {
 					ellipse(this.x, this.y, this.diameter, this.diameter);
 				};
-			}
-
-			// Para filtrar los eventos por tiempo, incrementa la variable tiempo
-			function tiempo(){
-				time = time + 1;
-				btn.value = time;
-			}
-
-			// para filtrar los eventos por tiempo, disminuye la variable tiempo
-			function regresar(){
-				time = time - 1;
-				btn.value = time; 
 			}
     	</script>	
     </body>
