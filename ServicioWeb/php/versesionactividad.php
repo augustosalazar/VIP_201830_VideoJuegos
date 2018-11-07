@@ -39,7 +39,7 @@
             $result = mysqli_query($connection,$query);
             // Añadir registros a la tabla que se creó anteriormente, desde la base de datos  
             while ($row = mysqli_fetch_row($result)){   
-                echo "<tr onclick=location='vereventos.php?var=$row[0]'>";  
+                echo "<tr onclick=location='visualizacion/vereventos.php?var=$row[0]&var2=$row[4]'>"; 
                 echo "<td align=center>".$row[0]."</td>";  
                 $date = date('Y-m-d',$row[1]);  
                 echo "<td align=center>".$date."</td>";
