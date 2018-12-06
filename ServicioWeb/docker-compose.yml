@@ -26,5 +26,25 @@ services:
     stdin_open: true
     tty: true
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+     - PMA_PORT=3306
+     - PMA_HOST=db
+     - PMA_USER=root
+     - PMA_PASSWORD=password
+     - PMA_ABSOLUTE_URI=http://192.168.100.172/psdadmin/
+     - PMA_ARBITRARY=1
+    restart: always
+    depends_on: 
+     - db
+    ports:
+     - "8101:80"
+
 volumes:
   volumeDB:
+
+networks:
+  default:
+    external:
+      name: brDown
