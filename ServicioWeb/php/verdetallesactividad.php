@@ -15,7 +15,7 @@
             <th>Edad</th>
             <th>Fecha</th>
             <th>Hora inicio</th>
-            <th>Nombre Minijueg</th>
+            <th>Nombre Minijuego</th>
             <th>Tiempo de duración</th>
             <th>Tiempo antes de la primera act sig</th>
             <th>Nombre Actividad</th>
@@ -55,7 +55,7 @@
                         $query4 = "SELECT * FROM SesionMiniJuego WHERE idSesionJuego=". $row1[0];
                         $result4 = mysqli_query($connection,$query4); 
                         while ($row4 = mysqli_fetch_row($result4)){   
-                            echo "<td align=center>".$row4[0]."</td>";
+                            echo "<td align=center>".$row4[1]."</td>";
                             $query3 = "SELECT * FROM SesionActividad WHERE idSesionMiniJuego=". $row4[0];    
                             $result3 = mysqli_query($connection,$query3); 
                                 while ($row3 = mysqli_fetch_row($result3)){   
