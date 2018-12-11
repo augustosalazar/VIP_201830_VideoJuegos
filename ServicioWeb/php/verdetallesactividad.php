@@ -63,8 +63,8 @@
                                 echo "<td>".r($row3[3] - $row3[1])."</td>";
                                 echo "<td align=center>".$row3[4]."</td>";
                                 echo "<td align=center>".$row3[5]."</td>";
-                                //echo "<td align=center> <a href='VIP/randompoints.php?var=$row3[0]&var2=$row3[1]&var3=$row3[4]' aling ='center'> Ver Eventos </a></td>";
-                                echo "<td align=center> <a href='visualizacion/vereventos.php?var=$row3[0]&var2=$row3[4]' aling ='center'> Ver Eventos </a></td>";     
+                                echo "<td align=center> <a href='VIP/randompoints.php?var=$row3[0]&var2=$row3[1]&var3=$row3[4]' aling ='center'> Ver Eventos </a></td>";
+                                //echo "<td align=center> <a href='visualizacion/vereventos.php?var=$row3[0]&var2=$row3[4]' aling ='center'> Ver Eventos </a></td>";     
                             }
                         }
                 }   
