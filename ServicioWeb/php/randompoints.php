@@ -309,7 +309,7 @@ html {
  
   <form action="randompoints2.php" method="get">
       <input name ="var3" id ="mm" type="text" style= "visibility: hidden">
-     <input name ="var3" id ="ai" type="text" style= "visibility: hidden">
+     <input name ="var" id ="ai" type="text" style= "visibility: hidden">
      <input name ="var2" id ="aaa" type="text" style= "visibility: hidden">
 	 <button class="boton_personalizado" id="segunda"> siguiente recreación</button>
  </form> 
