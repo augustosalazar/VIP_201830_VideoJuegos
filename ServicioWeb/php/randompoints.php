@@ -308,9 +308,9 @@ html {
  <button class="boton_personalizado" id="cero"> desde cero</button>
  
   <form action="randompoints2.php" method="get">
-      <input name ="SA" id ="mm" type="text" style= "visibility: hidden">
-     <input name ="ID" id ="ai" type="text" style= "visibility: hidden">
-     <input name ="TI" id ="aaa" type="text" style= "visibility: hidden">
+      <input name ="var3" id ="mm" type="text" style= "visibility: hidden">
+     <input name ="var" id ="ai" type="text" style= "visibility: hidden">
+     <input name ="var2" id ="aaa" type="text" style= "visibility: hidden">
 	 <button class="boton_personalizado" id="segunda"> siguiente recreación</button>
  </form> 
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js">  </script>
