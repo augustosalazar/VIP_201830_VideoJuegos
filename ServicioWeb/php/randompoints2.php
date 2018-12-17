@@ -1,6 +1,6 @@
 <?php
     		// atraves de este codigo php se extraen los datos de la BD para pasarlos a un array
-    		include('../configuration.php');
+    		include('./configuration.php');
     		$array = array();
 			$connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);
 	        if (!$connection) {
@@ -26,6 +26,7 @@
   $ids=$_GET['var3'];
   $taim=$_GET['var2'];//tiempo de el inicio de la actividad que contiene a cada evento.
   $sql="SELECT * FROM Evento WHERE idSesionActividad=".$_GET['var'];//Aquí hay que filtrar por id,idsesion,
+  echo $sql;
   $result=mysqli_query($connection,$sql);
   date_default_timezone_set('America/Bogota');
   $i=0;
@@ -174,18 +175,18 @@ var x = setInterval(function() {
      function pintar(){
 		 image=new Image();
 		if(sesion[0]===2){
-			   image.src= 'imagenes/dado.jpeg';
+			   image.src= 'visualizacion/imagenes/dado.png';
 		}else{
 			if(sesion[0]===1){
-				 image.src= 'imagenes/cubos.jpeg';
+				 image.src= 'visualizacion/imagenes/cubos.png';
 			}else{
 				if(sesion[0]===3){
-					image.src= 'imagenes/balde.jpeg';
+					image.src= 'visualizacion/imagenes/balde.png';
 				}else{
 					if(sesion[0]===0){
-						image.src= 'imagenes/carros.jpeg';
+						image.src= 'visualizacion/imagenes/carros.png';
 					}else{
-						image.src= 'imagenes/basket.jpeg';
+						image.src= 'visualizacion/imagenes/basket.png';
 					}
 				}
 			}

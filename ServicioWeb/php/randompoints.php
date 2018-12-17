@@ -1,6 +1,6 @@
 <?php
     		// atraves de este codigo php se extraen los datos de la BD para pasarlos a un array
-    		include('../configuration.php');
+    		include('./configuration.php');
     		$array = array();
 			$connection = mysqli_connect($db_host,$db_username,$db_password,$db_schema);
 	        if (!$connection) {
@@ -426,18 +426,18 @@ var x = setInterval(function() {
     function pintar(){
 		 image=new Image();
 		if(sesion[0]===2){
-			   image.src= 'imagenes/dado.jpeg';
+			   image.src= 'visualizacion/imagenes/dado.png';
 		}else{
 			if(sesion[0]===1){
-				 image.src= 'imagenes/cubos.jpeg';
+				 image.src= 'visualizacion/imagenes/cubos.png';
 			}else{
 				if(sesion[0]===3){
-					image.src= 'imagenes/balde.jpeg';
+					image.src= 'visualizacion/imagenes/balde.png';
 				}else{
 					if(sesion[0]===0){
-						image.src= 'imagenes/carros.jpeg';
+						image.src= 'visualizacion/imagenes/cars.png';
 					}else{
-						image.src= 'imagenes/basket.jepg';
+						image.src= 'visualizacion/imagenes/basket.png';
 					}
 				}
 			}
