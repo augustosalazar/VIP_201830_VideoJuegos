@@ -22,6 +22,10 @@ if (!$connection) {
 }
 //$query1 = "SELECT * FROM Jugador";
 
+$log = fopen("log.txt","a+");
+fwrite($log,date("Y-m-d H:i:s")." starting $uploaded_file $insert\r\n");
+fclose($log);
+
 foreach($players as $key=>$value){
 	$user=$value['ID'];
 	$level=$value['Nivel'];
@@ -40,6 +44,9 @@ foreach($players as $key=>$value){
 			$result=mysqli_query($connection,$insert);
 			if(!$result){
 				echo "error 1";
+				$log = fopen("log.txt","a+");
+				fwrite($log,date("Y-m-d H:i:s")."$uploaded_file $insert\r\n");
+				fclose($log);
 				break;
 			}
 			$query_verify = "SELECT id FROM Jugador WHERE idJugador='".$user."'";
@@ -71,15 +78,20 @@ foreach($players as $key=>$value){
 				$timestampend=$valuew['TimeStampEnd']; //*** */
 				$levelofaccomplishmentsession=$valuew['LevelOfAccomplishment']; //*** */
 				$timefirstevent=$valuew['TimeToFirstEvent']; //*** */
-				$Resumen = $valuew['Resumen']; //*** */
+				$estadoInicialSockets = $valuew['EstadoInicialSockets']; //*** */
+				$estadoInicialObjetos = $valuew['EstadoInicialObjetos']; //*** */
+				$estadoFinal = $valuew['EstadoFinal']; //*** */
 				$ActionEvents = $valuew['ActionEvents']; //*** */
 
 
-				$insert = "INSERT INTO Sesion (versionDoc,versionJuego,versionParam,timeStamp,idJugador,idMinijuego,idActividad,timeStampInicio,timeStampFin,tiempoPrimeraActividadSignificativa,resumen,nivelExito) VALUES ('$versionDoc','$versionJuego',$versionParam','$idOfUser','$timestamp','$idOfUser','$idminijuego','$idActividad','$timestampstart','$timestampend','$timefirstevent','$Resumen','$levelofaccomplishmentsession')";
+				$insert = "INSERT INTO Sesion (versionDoc,versionJuego,versionParam,timeStamp,idJugador,idMinijuego,idActividad,timeStampInicio,timeStampFin,tiempoPrimeraActividadSignificativa,estadoInicialSockets,estadoInicialObjetos,estadoFinal,nivelExito) VALUES ('$versionDoc','$versionJuego','$versionParam','$timestamp','$idOfUser','$idminijuego','$idActividad','$timestampstart','$timestampend','$timefirstevent','$estadoInicialSockets','$estadoInicialObjetos','$estadoFinal','$levelofaccomplishmentsession')";
 				$resultado=mysqli_query($connection,$insert);
 				if(!$resultado){
-					printf("query error.\n", $insert);
+					printf("query error %s\n", $insert);
 					echo "error 2";
+					$log = fopen("log.txt","a+");
+					fwrite($log,date("Y-m-d H:i:s")."$uploaded_file $insert\r\n");
+					fclose($log);
 					break;
 				}
 
@@ -93,13 +105,15 @@ foreach($players as $key=>$value){
 				foreach($ActionEvents as $keye=>$valuee){
 					$type = $valuee['type'];
 					$timeofevent = $valuee['TimeStamp'];
-					$coordinatestartX = $valuee['CoordinatesStartX'];
-					$coordinatestartY = $valuee['CoordinatesStartY'];
-					$coordinatesendX= $valuee['CoordinatesEndX'];
-					$coordinatesendY= $valuee['CoordinatesEndY'];
-					$ObjectInteractedID= $valuee['ObjectInteractedID'];
+					$coordinatestartX = $valuee['coordenadaInicioX'];
+					$coordinatestartY = $valuee['coordenadaInicioY'];
+					$coordinatesendX= $valuee['coordenadaFinX'];
+					$coordinatesendY= $valuee['coordenadaFinY'];
+					$objectDescriptor= $valuee['ObjectInteractedID'];
+					$objectID= $valuee['ObjectID'];
 
-					$query_verify = "SELECT * FROM SesionActividad where id=".$idminijuego;
+
+					$query_verify = "SELECT * FROM Sesion where id=".$idminijuego;
 					$result = mysqli_query($connection,$query_verify);
 					$row_cnt = $result->num_rows;
 					//printf("query  %s\n", $query_verify);
@@ -107,12 +121,14 @@ foreach($players as $key=>$value){
 					$row = mysqli_fetch_assoc($result);
 					$idSesion = $row['id'];
 
-					$insert = "INSERT INTO Evento2 (tipo,timeStamp,coordenadaInicioX,coordenadaInicioY,coordenadaFinX,coordenadaFinY, idElemento,idSesion)
-					VALUES ('$type','$timeofevent','$coordinatestart','$coordinatesend','$ObjectInteractedID','$idSesion')";
+					$insert = "INSERT INTO Evento2 (tipo,timeStamp,coordenadaInicioX,coordenadaInicioY,coordenadaFinX,coordenadaFinY, objectDescriptor,objectId,idSesion) VALUES ('$type','$timeofevent','$coordinatestartX','$coordinatestartY','$coordinatesendX','$coordinatesendY','$objectDescriptor','$objectID','$idSesion')";
 					$resultado=mysqli_query($connection,$insert);
 					if(!$resultado){
 						printf("query error %s\n", $insert);
 						echo "error 5";
+						$log = fopen("log.txt","a+");
+						fwrite($log,date("Y-m-d H:i:s")." $uploaded_file $insert\r\n");
+						fclose($log);
 						break;
 					}
 				}
@@ -121,5 +137,8 @@ foreach($players as $key=>$value){
 	} //foreach($sessions as $keyx=>$valuex){
 
 }
+$log = fopen("log.txt","a+");
+fwrite($log,date("Y-m-d H:i:s")." $uploaded_file ok\r\n");
+fclose($log);
 }// end of function
 ?>

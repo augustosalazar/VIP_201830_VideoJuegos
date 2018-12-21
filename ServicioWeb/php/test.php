@@ -1,8 +1,8 @@
 <?php
   include('configuration.php');
-	include('file2bd.php');
+	include('file2bd2.php');
 ?>
 
 <?php
-	writeToDb('uploads/1538669773-r.txt',$db_host,$db_username,$db_password,$db_schema);
+	writeToDb('uploads/formatDic182018/1545246079-r.json',$db_host,$db_username,$db_password,$db_schema);
 ?>
