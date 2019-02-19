@@ -34,7 +34,7 @@ foreach($players as $key=>$value){
 	$sessions = $value['GameSessions'];
 	$query_verify = "SELECT id FROM Jugador WHERE idJugador='".$user."'";
 	//printf("Query %s\n", $query_verify);
-   $result = mysqli_query($connection,$query_verify);
+    $result = mysqli_query($connection,$query_verify);
 		$row_cnt = $result->num_rows;
 		//printf("Result set has %d rows.\n", $row_cnt);
 		if ($row_cnt == 0){
