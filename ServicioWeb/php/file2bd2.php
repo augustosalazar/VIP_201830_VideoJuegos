@@ -31,6 +31,7 @@ foreach($players as $key=>$value){
 	$level=$value['Nivel'];
 	$nombre=$value['Nombre'];
 	$edad =$value['Edad'];
+	$TokenParent =$value['TokenParent'];
 	$sessions = $value['GameSessions'];
 	$query_verify = "SELECT id FROM Jugador WHERE idJugador='".$user."'";
 	//printf("Query %s\n", $query_verify);
@@ -38,7 +39,7 @@ foreach($players as $key=>$value){
 		$row_cnt = $result->num_rows;
 		//printf("Result set has %d rows.\n", $row_cnt);
 		if ($row_cnt == 0){
-			$insert = "INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador) VALUES ('$user','$level','$nombre','$edad')";
+			$insert = "INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('$user','$level','$nombre','$edad','$TokenParent')";
 
 
 			$result=mysqli_query($connection,$insert);
@@ -111,7 +112,7 @@ foreach($players as $key=>$value){
 					$coordinatesendY= $valuee['coordenadaFinY'];
 					$objectDescriptor= $valuee['ObjectInteractedID'];
 					$objectID= $valuee['ObjectID'];
-
+					$Significativo= $valuee['Significativo'];
 
 					$query_verify = "SELECT * FROM Sesion where id=".$idminijuego;
 					$result = mysqli_query($connection,$query_verify);
@@ -121,7 +122,7 @@ foreach($players as $key=>$value){
 					$row = mysqli_fetch_assoc($result);
 					$idSesion = $row['id'];
 
-					$insert = "INSERT INTO Evento2 (tipo,timeStamp,coordenadaInicioX,coordenadaInicioY,coordenadaFinX,coordenadaFinY, objectDescriptor,objectId,idSesion) VALUES ('$type','$timeofevent','$coordinatestartX','$coordinatestartY','$coordinatesendX','$coordinatesendY','$objectDescriptor','$objectID','$idSesion')";
+					$insert = "INSERT INTO Evento2 (tipo,timeStamp,coordenadaInicioX,coordenadaInicioY,coordenadaFinX,coordenadaFinY, objectDescriptor,objectId,idSesion,Significativo) VALUES ('$type','$timeofevent','$coordinatestartX','$coordinatestartY','$coordinatesendX','$coordinatesendY','$objectDescriptor','$objectID','$idSesion','$Significativo')";
 					$resultado=mysqli_query($connection,$insert);
 					if(!$resultado){
 						printf("query error %s\n", $insert);
