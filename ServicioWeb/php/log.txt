@@ -1,6 +1,22 @@
-2019-05-10 10:10:36 starting uploads/1557501036-r.json 
-2019-05-10 10:10:36uploads/1557501036-r.json INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('2126028660','-1','Franciscovega','15','39a282')
-2019-05-10 10:10:36 uploads/1557501036-r.json ok
-2019-05-10 10:12:13 starting uploads/1557501133-r.json 
-2019-05-10 10:12:13uploads/1557501133-r.json INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('848873631','-1','Carlos','19','123as')
-2019-05-10 10:12:13 uploads/1557501133-r.json ok
+2019-05-10 16:49:07 starting uploads/1557524947-r.json 
+2019-05-10 16:49:07 before loop $
+2019-05-10 16:49:07 uploads/1557524947-r.json ok
+2019-05-10 17:14:49 starting uploads/1557526489-r.json 
+2019-05-10 17:14:49 before loop
+2019-05-10 17:14:49 in loop $
+2019-05-10 17:14:49Failed uploads/1557526489-r.json INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('2126028660','-1','Franciscovega','15','39a282')
+2019-05-10 17:14:49 uploads/1557526489-r.json ok
+2019-05-10 17:17:40 starting uploads/1557526660-r.json 
+2019-05-10 17:17:40 before loop
+2019-05-10 17:17:40 in loop $
+2019-05-10 17:17:40Failed uploads/1557526660-r.json INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('2126028660','-1','Franciscovega','15','39a282')
+2019-05-10 17:17:40 uploads/1557526660-r.json ok
+2019-05-10 17:19:07 starting uploads/1557526747-r.json 
+2019-05-10 17:19:07 before loop
+2019-05-10 17:19:07 in loop $
+2019-05-10 17:19:07Failed uploads/1557526747-r.json INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('2126028660','-1','Franciscovega','15','39a282')
+2019-05-10 17:19:07 uploads/1557526747-r.json ok
+2019-05-13 11:23:57 starting uploads/1557764637-r.json 
+2019-05-13 11:23:57 before loop
+2019-05-13 11:23:57 in loop $
+2019-05-13 11:23:57 uploads/1557764637-r.json ok

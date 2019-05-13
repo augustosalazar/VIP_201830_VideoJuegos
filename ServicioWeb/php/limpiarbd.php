@@ -10,15 +10,15 @@
 	$querys = array();
 	$querys[0]= "DELETE FROM Evento";
 	$querys[1]= "DELETE FROM Evento2";
-	$querys[2]= "DELETE FROM hijos";
-	$querys[3]= "DELETE FROM jugador";
-	$querys[4]= "DELETE FROM sesion";
+	$querys[2]= "DELETE FROM Hijos";
+	$querys[3]= "DELETE FROM Jugador";
+	$querys[4]= "DELETE FROM Sesion";
 	$querys[5]= "DELETE FROM SesionJuego";
 	$querys[6]= "DELETE FROM Jugador";
-	$querys[7]= "DELETE FROM sesionMiniJuego";
-	$querys[8]= "DELETE FROM sesionactividad";
-	$querys[9]= "DELETE FROM sesionminijuego";
-	$querys[10]= "DELETE FROM sesionjuego";
+	$querys[7]= "DELETE FROM SesionMiniJuego";
+	$querys[8]= "DELETE FROM Sesionactividad";
+	$querys[9]= "DELETE FROM Sesionminijuego";
+	$querys[10]= "DELETE FROM Sesionjuego";
 	for ($i=0; $i < count($querys); $i++) { 
 		mysqli_query($connection,$querys[$i]);
 	}

@@ -25,8 +25,13 @@ if (!$connection) {
 $log = fopen("log.txt","a+");
 fwrite($log,date("Y-m-d H:i:s")." starting $uploaded_file $insert\r\n");
 fclose($log);
-
+$log = fopen("log.txt","a+");
+fwrite($log,date("Y-m-d H:i:s")." before loop\r\n");
+fclose($log);
 foreach($players as $key=>$value){
+	$log = fopen("log.txt","a+");
+	fwrite($log,date("Y-m-d H:i:s")." in loop $\r\n");
+	fclose($log);
 	$user=$value['ID'];
 	$level=$value['Nivel'];
 	$nombre=$value['Nombre'];
@@ -40,13 +45,11 @@ foreach($players as $key=>$value){
 		//printf("Result set has %d rows.\n", $row_cnt);
 		if ($row_cnt == 0){
 			$insert = "INSERT INTO Jugador (idJugador,nivelJujador,nombreJugador,edadJugador,tokenJugador) VALUES ('$user','$level','$nombre','$edad','$TokenParent')";
-
-
 			$result=mysqli_query($connection,$insert);
 			if(!$result){
 				echo "error 1";
 				$log = fopen("log.txt","a+");
-				fwrite($log,date("Y-m-d H:i:s")."$uploaded_file $insert\r\n");
+				fwrite($log,date("Y-m-d H:i:s")."Failed $uploaded_file $insert\r\n");
 				fclose($log);
 				break;
 			}
@@ -67,8 +70,6 @@ foreach($players as $key=>$value){
 		$mini = $valuex['MiniGameSessions'];
 
 
-
-	
 		foreach($mini as $keyz=>$valuez){
 			$idminijuego=$valuez['ID'];  //*** */
 			$activitySessions = $valuez['ActivitySessions'];
